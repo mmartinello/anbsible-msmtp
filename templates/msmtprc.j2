@@ -1,3 +1,5 @@
+{{ ansible_managed | comment }}
+
 # Set default values for all following accounts.
 defaults
 {% if msmtp_defaults.auth is defined %}
@@ -15,7 +17,7 @@ logfile        {{ msmtp_defaults.logfile }}
 
 {% for account in msmtp_accounts %}
 {% if account.comment is defined and account.comment != "" %}
-{{ account.comment | comment }}
+#{{ account.comment }}
 {% endif %}
 account        {{ account.name }}
 host           {{ account.host }}
