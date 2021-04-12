@@ -1,2 +1,20 @@
 ---
-# defaults file for mmartinello.msmtp
+# msmtp default settings
+msmtp_defaults:
+  auth: login
+  tls: off
+  tls_trust_file: /etc/ssl/certs/ca-certificates.crt
+  logfile: ~/.msmtp.log
+
+# Account list
+msmtp_accounts:
+  - comment: Example account
+    name: example
+    host: localhost
+    port: 25
+    from: "root@{{ ansible_fqdn }}"
+    user: root
+    password: password
+
+# Default account name
+msmtp_default_account: example
