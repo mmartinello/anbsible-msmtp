@@ -1,0 +1,5 @@
+---
+- name: Install msmtp
+  yum:
+    name: msmtp
+    state: present

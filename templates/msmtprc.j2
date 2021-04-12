@@ -1,0 +1,29 @@
+# Set default values for all following accounts.
+defaults
+{% if msmtp_defaults.auth is defined %}
+auth           {{ msmtp_defaults.auth }}
+{% endif %}
+{% if msmtp_defaults.tls is defined %}
+tls            {{ msmtp_defaults.tls }}
+{% endif %}
+{% if msmtp_defaults.tls_trust_file is defined %}
+tls_trust_file {{ msmtp_defaults.tls_trust_file }}
+{% endif %}
+{% if msmtp_defaults.logfile is defined %}
+logfile        {{ msmtp_defaults.logfile }}
+{% endif %}
+
+{% for account in msmtp_accounts %}
+{% if account.comment is defined and account.comment != "" %}
+{{ account.comment | comment }}
+{% endif %}
+account        {% account.name %}
+host           {% account.host %}
+port           {% account.port | default('25') %}
+from           {% account.from %}
+user           {% account.user %}
+password       {% account.password %}
+{% endfor %}
+
+# Set the default account
+account default : {% msmtp_default_account %}

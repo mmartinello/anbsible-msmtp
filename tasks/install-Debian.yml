@@ -1,0 +1,7 @@
+---
+- name: Install msmtp
+  apt:
+    name:
+      - msmtp
+      - msmtp-mta
+    state: present

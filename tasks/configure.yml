@@ -1,0 +1,5 @@
+---
+- name: Configure global msmtp on /etc/msmtprc file
+  template:
+    src: msmtprc.j2
+    dest: /etc/msmtprc
