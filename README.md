@@ -20,6 +20,18 @@ This role has 3 main variables:
 * `msmtp_accounts`: a list of accounts, each with its own configuration
 * `msmtp_default_account`: the name of the default account
 
+Each account supports the following parameters:
+
+| Parameter | Description                                          | Required |
+| ----------| ---------------------------------------------------- | -------- |
+| comment   | A comment string for this account                    | NO       |
+| name      | The account name                                     | YES      |
+| host      | The SMTP hostname                                    | YES      |
+| port      | The SMTP port (default `25`)                         | NO       |
+| from      | The sender e-mail address (default: `account.user`)  | NO       |
+| user      | The SMTP login user                                  | YES      |
+| password  | The SMTP login password                              | YES      |
+
 Please see `defaults/main.yml` for details.
 
 **NOTE:** these settings are saved into a `/etc/msmtprc`file which is the
