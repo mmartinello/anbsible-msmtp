@@ -17,13 +17,13 @@ logfile        {{ msmtp_defaults.logfile }}
 {% if account.comment is defined and account.comment != "" %}
 {{ account.comment | comment }}
 {% endif %}
-account        {% account.name %}
-host           {% account.host %}
-port           {% account.port | default('25') %}
-from           {% account.from %}
-user           {% account.user %}
-password       {% account.password %}
+account        {{ account.name }}
+host           {{ account.host }}
+port           {{ account.port | default('25') }}
+from           {{ account.from | default(account.user) }}
+user           {{ account.user }}
+password       {{ account.password }}
 {% endfor %}
 
 # Set the default account
-account default : {% msmtp_default_account %}
+account default : {{ msmtp_default_account }}
