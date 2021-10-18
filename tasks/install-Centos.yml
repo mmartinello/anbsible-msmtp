@@ -3,3 +3,13 @@
   yum:
     name: msmtp
     state: present
+
+- name: Install mailx
+  yum:
+    name: mailx
+    state: present
+
+- name: Install mutt
+  yum:
+    name: mutt
+    state: present
