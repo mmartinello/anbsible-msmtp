@@ -2,7 +2,7 @@
 # msmtp default settings
 msmtp_defaults:
   auth: login
-  tls: off
+  tls: 'off'
   tls_trust_file: /etc/ssl/certs/ca-certificates.crt
   logfile: ~/.msmtp.log
 
