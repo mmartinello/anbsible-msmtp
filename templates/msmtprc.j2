@@ -11,7 +11,7 @@ tls            {{ msmtp_defaults.tls }}
 {% if msmtp_defaults.tls_trust_file is defined %}
 tls_trust_file {{ msmtp_defaults.tls_trust_file }}
 {% endif %}
-{% if msmtp_defaults.logfile is defined %}
+{% if msmtp_defaults.logfile is defined and msmtp_defaults.logfile != "" %}
 logfile        {{ msmtp_defaults.logfile }}
 {% endif %}
 
@@ -23,8 +23,12 @@ account        {{ account.name }}
 host           {{ account.host }}
 port           {{ account.port | default('25') }}
 from           {{ account.from | default(account.user) }}
+{% if account.user is defined and account.user != "" %}
 user           {{ account.user }}
+{% endif %}
+{% if account.password is defined and account.user != "" %}
 password       {{ account.password }}
+{% endif %}
 {% endfor %}
 
 # Set the default account
